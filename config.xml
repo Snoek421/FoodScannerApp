@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.snoek.foodscan" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>FoodScanner</name>
+    <description>An app to scan ingredients from a product's label for ingredients that trigger allergies and such.</description>
+    <author email="csnoek9131@conestogac.on.ca" href="http://github.com/Snoek421">
+        Casey Snoek
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <icon src="icon.png" />
+    <splash src="splash.png" />
+
+</widget>
