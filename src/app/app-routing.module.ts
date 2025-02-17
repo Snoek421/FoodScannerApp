@@ -15,25 +15,25 @@ import {AddingredientpageComponent} from "./addingredientpage/addingredientpage.
 import {EditingredientspageComponent} from "./editingredientspage/editingredientspage.component";
 
 const routes: Routes = [
-    {path: "home", component: HomepageComponent},
-    {path: "addprofile", component: AddProfilePageComponent},
-    {path: "addproduct", component: AddpageComponent},
-    {path: "editprofile/:userid", component: EditprofilepageComponent},
-    {path: "show", component: ShowpageComponent},
-    {path: "result/:prodid/:scanid", component: ResultpageComponent},
-    {path:"ingredients", component: DietlistpageComponent},
-    {path: "ingredients/add/:userid", component: AddingredientpageComponent},
-    {path: "ingredients/edit/:userid", component: EditingredientspageComponent},
-    {path: "settings", component: SettingspageComponent},
-    {path: "detail/:id", component: DetailpageComponent},
-    {path: "about", component: AboutpageComponent},
-    {path: "", redirectTo: "/home", pathMatch: "full"},
-    {path: "**", component: ErrorpageComponent},
+  {path: "home", component: HomepageComponent},
+  {path: "addprofile", component: AddProfilePageComponent},
+  {path: "addproduct", component: AddpageComponent},
+  {path: "editprofile/:userid", component: EditprofilepageComponent},
+  {path: "show", component: ShowpageComponent},
+  {path: "result/:prodid/:scanid", component: ResultpageComponent},
+  {path: "ingredients", component: DietlistpageComponent},
+  {path: "ingredients/add/:userid", component: AddingredientpageComponent},
+  {path: "ingredients/edit/:userid", component: EditingredientspageComponent},
+  {path: "settings", component: SettingspageComponent},
+  {path: "detail/:id", component: DetailpageComponent},
+  {path: "about", component: AboutpageComponent},
+  {path: "", redirectTo: "/home", pathMatch: "full"},
+  {path: "**", component: ErrorpageComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

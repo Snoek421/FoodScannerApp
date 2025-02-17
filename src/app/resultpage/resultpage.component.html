@@ -1,14 +1,28 @@
 <div class="container">
-  <div class="card" *ngIf="scannedProduct else notScanned">
+  <div class="card"
+       *ngIf="scannedProduct else notScanned">
     <div class="card-header text-center">
       <h1>Scan Results for product: {{product.productName}}</h1>
     </div>
     <div class="card-body">
       <h3>Product name: {{product.productName}}</h3>
-      <h4 *ngIf="resultCheck(scan); else no" class="text-danger">Warning! May trigger diet issues.</h4>
-      <ng-template #no><h4 class="text-success">This should be safe to eat.</h4> </ng-template>
+      <h4 *ngIf="resultCheck(scan); else no"
+          class="text-danger">Warning! May trigger diet issues.</h4>
+      <ng-template #no><h4 class="text-success">This should be safe to eat.</h4></ng-template>
+      <label for="productImage"
+             class="fw-bolder">Ingredients label</label>
+      <div class="text-center mb-2">
+        <img id="productImage"
+             *ngIf="imageURI != ''"
+             class="border rounded p-2 border-secondary border-4"
+             [src]="imageURI"
+             alt="image of the ingredients"
+             height="335"
+             width="250"
+             />
+      </div>
       <table class="table table-striped-columns table-bordered bg-light">
-        <thead >
+        <thead>
           <tr>
             <th>Ingredient</th>
             <th>Problem</th>
@@ -19,18 +33,31 @@
           <tr *ngFor="let ingredient of ingredients">
             <td>{{ingredient.name}}</td>
             <td>{{ingredient.problematic}}</td>
-            <td>{{ingredient.dietaryRestriction}}</td>
+            <td *ngIf="ingredient.dietaryRestriction; else addable">{{ingredient.dietaryRestriction}}</td>
+            <ng-template #addable>
+              <td>
+                <button id="btnCustomAdd"
+                        class="btn btn-success"
+                        (click)="btnCustomAdd_click(ingredient)">Add as custom
+                </button>
+              </td>
+            </ng-template>
           </tr>
         </tbody>
       </table>
       <div class="mt-2 row">
-        <button class="btn btn-success col-6" (click)="btnScanProduct_click()">Re-scan Product</button>
-        <button class="btn btn-warning col-6" (click)="btnBackToList_click()">Back to Product List</button>
+        <button class="btn btn-success col-6"
+                (click)="btnScanProduct_click()">Re-scan Product
+        </button>
+        <button class="btn btn-warning col-6"
+                (click)="btnBackToList_click()">Back to Product List
+        </button>
       </div>
 
     </div>
   </div>
-  <ng-template #notScanned class="card">
+  <ng-template #notScanned
+               class="card">
     <div class="card">
       <div class="card-header text-center">
         <h1>Product name: {{product.productName}}</h1>
@@ -38,11 +65,15 @@
       <div class="card-body">
         <h3>You haven't scanned this product yet</h3><br/>
         <div class="mb-2 row">
-          <button class="btn btn-success col-6" (click)="btnScanProduct_click()">Scan Product</button>
-          <button class="btn btn-warning col-6" (click)="btnBackToList_click()">Back to Product List</button>
+          <button class="btn btn-success col-6"
+                  (click)="btnScanProduct_click()">Scan Product
+          </button>
+          <button class="btn btn-warning col-6"
+                  (click)="btnBackToList_click()">Back to Product List
+          </button>
         </div>
         <table class="table table-striped table-bordered bg-light">
-          <thead >
+          <thead>
             <tr>
               <th>Ingredient</th>
             </tr>

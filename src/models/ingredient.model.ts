@@ -1,11 +1,11 @@
 export class Ingredient {
-  name:string = "";
-  problematic:string = "No";
+  name: string = "";
+  problematic: string = "No";
 
-  dietaryRestriction:string = "";
+  dietaryRestriction: string = "";
 
 
-  constructor(name:string) {
+  constructor(name: string) {
     this.name = name;
   }
 }

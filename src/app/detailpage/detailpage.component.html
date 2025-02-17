@@ -1,42 +1,70 @@
 <div class="m-4">
-    <div class="card">
-        <div class="card-header">
-            <h2>Modify a Product</h2>
-        </div>
-        <div class="card-body">
-            <form #productForm="ngForm">
-                <div class="mb-3">
-                    <label for="txtName">Name</label>
-                    <input id="txtName" type="text" class="form-control"
-                           name="txtName"
-                           [(ngModel)]="product.productName"
-                           #productName="ngModel"
-                           required
-                    >
-                  <div *ngIf="productName.invalid && (productName.dirty || productName.touched)">
-                    <small *ngIf="productName.errors && productName.errors['required']" class="text-danger">Product name is required</small>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="txtPrice">Price</label>
-                    <textarea id="txtPrice" class="form-control"
-                           name="txtPrice"
-                           [(ngModel)]="product.ingredientsList"
-                           #ingredientsList="ngModel"
-                              required
-                    ></textarea>
-                  <div *ngIf="ingredientsList.invalid && (ingredientsList.dirty || ingredientsList.touched)">
-                    <small *ngIf="ingredientsList.errors && ingredientsList.errors['required']" class="text-danger">Ingredients are required</small>
-                  </div>
-                </div>
-
-                <button type="button" id="btnUpdate" class="btn btn-primary" [disabled]="productForm.invalid" (click)="btnUpdate_click()">Update</button>
-              <button type="button" id="btnDelete" class="btn btn-danger" (click)="btnDelete_click()">Delete</button>
-              <button type="button" id="btnBack" class="btn btn-warning float-end" (click)="btnBack_click()">Back to List</button>
-            </form>
-        </div>
+  <div class="card">
+    <div class="card-header">
+      <h2>Modify a Product</h2>
     </div>
+    <div class="card-body">
+      <label for="productImage">Ingredients label</label>
+      <div class="text-center mb-3">
+        <img id="productImage"
+             class="border p-2 rounded border-secondary border-4"
+             [src]="imageURI"
+             (click)="imgCapture_click()"
+             alt="add an image or take a picture"
+             width="100"
+             height="100"/>
+      </div>
+      <form #productForm="ngForm">
+        <div class="mb-3">
+          <label for="txtName">Name</label>
+          <input id="txtName"
+                 type="text"
+                 class="form-control"
+                 name="txtName"
+                 [(ngModel)]="product.productName"
+                 #productName="ngModel"
+                 required
+          >
+          <div *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+            <small *ngIf="productName.errors && productName.errors['required']"
+                   class="text-danger">Product name is required</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="txtPrice">Ingredients</label>
+          <textarea id="txtPrice"
+                    class="form-control"
+                    name="txtPrice"
+                    [(ngModel)]="product.ingredientsList"
+                    #ingredientsList="ngModel"
+                    required
+          ></textarea>
+          <div *ngIf="ingredientsList.invalid && (ingredientsList.dirty || ingredientsList.touched)">
+            <small *ngIf="ingredientsList.errors && ingredientsList.errors['required']"
+                   class="text-danger">Ingredients are required</small>
+          </div>
+        </div>
+
+        <button type="button"
+                id="btnUpdate"
+                class="btn btn-primary"
+                [disabled]="productForm.invalid"
+                (click)="btnUpdate_click()">Update
+        </button>
+        <button type="button"
+                id="btnDelete"
+                class="btn btn-danger"
+                (click)="btnDelete_click()">Delete
+        </button>
+        <button type="button"
+                id="btnBack"
+                class="btn btn-warning float-end"
+                (click)="btnBack_click()">Back to List
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
 

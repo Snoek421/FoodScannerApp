@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {User} from "../../models/user.model";
 import {Router} from "@angular/router";
 import {DatabaseService} from "../../services/database.service";
@@ -19,23 +19,21 @@ export class AddProfilePageComponent {
 
   btnAdd_click() {
     this.database.insertUser(this.user)
-      .then((data)=>{
-        //process resolved data
-        // console.log(data);
-        alert("Record added successfully");
+      .then((data) => {
+        alert("Profile created successfully!");
+        localStorage.setItem("userID", data.insertId);
       })
-      .catch((err)=>{
+      .catch((err) => {
         //process rejected data
         alert("Error in insert " + err.message);
       });
-    this.router.navigate(['home'])
+    this.router.navigate(['show'])
   }
 
   checkboxValidator() {
-    if (!this.user.gluten && !this.user.dairy && !this.user.treenut && !this.user.peanut){
+    if (!this.user.gluten && !this.user.dairy && !this.user.treenut && !this.user.peanut) {
       return false;
-    }
-    else {
+    } else {
       return true;
     }
 

@@ -3,26 +3,45 @@
     <div class="card-header text-center">
       <h1>About the App</h1>
     </div>
-    <div class="accordion" id="accordionExample">
+    <div class="accordion"
+         id="accordionExample">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h2 class="accordion-header"
+            id="headingOne">
+          <button class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne">
             Developer
           </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div id="collapseOne"
+             class="accordion-collapse collapse show"
+             aria-labelledby="headingOne"
+             data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>This app was completely written by Casey Snoek.</strong>
           </div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h2 class="accordion-header"
+            id="headingTwo">
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo">
             Developed for
           </button>
         </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div id="collapseTwo"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingTwo"
+             data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>This app was developed as a final project for:</strong><br/>
             PROG2430 - Programming Mobile Application
@@ -30,12 +49,21 @@
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h2 class="accordion-header"
+            id="headingThree">
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree">
             Story
           </button>
         </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div id="collapseThree"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingThree"
+             data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>I wanted to make this app so I could use it for myself and continue developing it in the future.</strong><br/>
             There are not many apps that are made to scan a list of ingredients and check for anything containing gluten, so I decided I should make one myself. I wanted
@@ -44,28 +72,66 @@
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h2 class="accordion-header"
+            id="headingFour">
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseFour">
             Instructions
           </button>
         </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div id="collapseFour"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingFour"
+             data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>For a new product...</strong>
             <ol>
               <li>Select a profile or create one with your name and your dietary restrictions.</li>
               <li>Click the "Add New Product" button or "Add Product" in the navigation menu.</li>
               <li>Enter the product name and the ingredients list from the product's label.</li>
+              <li>Take a picture of the ingredients label if desired</li>
               <li>Click the "Scan product" button.</li>
               <li>Read the results page to check if any ingredients are found that trigger your chosen dietary restriction(s).</li>
             </ol>
-            <strong>For a previously scanned product...</strong>
+            <strong>For a previously added product...</strong>
             <ol>
               <li>Select a profile or create one with your name and your dietary restrictions (or modify your profile to change your dietary restrictions).</li>
               <li>Select a product from the list of previously added products.</li>
               <li>Click the "Re-Scan Product" button. It will bring you back to the list of products.</li>
               <li>Select the same product again to view the new scan results.</li>
             </ol>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"
+            id="headingFive">
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFive"
+                  aria-expanded="false"
+                  aria-controls="collapseFive">
+            Example Ingredients
+          </button>
+        </h2>
+        <div id="collapseFive"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingFive"
+             data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>You can copy this string and paste it into the ingredients field for a product to test the detection of different diets.</strong>
+            <p id="copyText">{{exampleIngredients}}</p>
+            <div class="text-end">
+              <button id="btnCopy"
+                      class="btn btn-outline-dark btn-secondary text-light"
+                      (click)="btnCopy_click()">Copy
+              </button>
+            </div>
           </div>
         </div>
       </div>

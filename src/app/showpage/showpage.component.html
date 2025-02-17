@@ -1,24 +1,37 @@
 <div class="container">
-    <div class="card">
-        <div class="card-header text-center">
-            <h1>Scanned Products</h1>
-        </div>
-        <div class="card-body">
-            <ul class="list-group ms-3">
-                <li *ngFor="let item of products" class="list-group-item list-group-item-action row">
-                  <label class="btn btn-dark text-light fw-semibold col" (click)="productResult_click(item)">{{item.productName}}</label>
-                  <div *ngIf="item.scan.id != -1 && resultCheck(item.scan)" class="badge bg-danger col mb-1">Unsafe</div>
-                  <div *ngIf="item.scan.id != -1 && !resultCheck(item.scan)" class="badge bg-success col mb-1">Safe</div>
-                  <br/>
-                  <button class="btn btn-primary btn-sm col-6" (click)="btnModify_click(item)">Modify Product</button>
-                  <button *ngIf="item.scan.id != -1" class="btn btn-danger btn-sm col-6 float-end" (click)="btnDeleteScan_click(item.scan)">Delete Scan</button>
-                </li>
-            </ul>
-          <div class="mt-2 d-grid">
-            <button class="btn btn-success " (click)="btnAddProduct_click()">Add New Product</button>
-          </div>
-
-        </div>
+  <div class="card">
+    <div class="card-header text-center">
+      <h1>Scanned Products</h1>
     </div>
+    <div class="card-body">
+      <ul class="list-group ms-3">
+        <li *ngFor="let item of products"
+            class="list-group-item list-group-item-action row">
+          <label class="btn btn-dark text-light fw-semibold col"
+                 (click)="productResult_click(item)">{{item.productName}}</label>
+          <div *ngIf="item.scan.id != -1 && resultCheck(item.scan)"
+               class="badge bg-danger col mb-1">Unsafe
+          </div>
+          <div *ngIf="item.scan.id != -1 && !resultCheck(item.scan)"
+               class="badge bg-success col mb-1">Safe
+          </div>
+          <br/>
+          <button class="btn btn-primary btn-sm col-6"
+                  (click)="btnModify_click(item)">Modify Product
+          </button>
+          <button *ngIf="item.scan.id != -1"
+                  class="btn btn-danger btn-sm col-6 float-end"
+                  (click)="btnDeleteScan_click(item.scan)">Delete Scan
+          </button>
+        </li>
+      </ul>
+      <div class="mt-2 d-grid">
+        <button class="btn btn-success "
+                (click)="btnAddProduct_click()">Add New Product
+        </button>
+      </div>
+
+    </div>
+  </div>
 </div>
 

@@ -5,10 +5,10 @@ export class User {
   dairy: boolean = false;
   treenut: boolean = false;
   peanut: boolean = false;
-  customIngredients:string = "";
+  customIngredients: string = "";
 
 
-  constructor(name: string, gluten:boolean, dairy:boolean, treenut:boolean, peanut:boolean, customIngredients:string) {
+  constructor(name: string, gluten: boolean, dairy: boolean, treenut: boolean, peanut: boolean, customIngredients: string) {
     this.name = name;
     this.gluten = gluten;
     this.dairy = dairy;

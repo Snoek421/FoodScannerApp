@@ -19,7 +19,8 @@
           >
         </div>
         <div *ngIf="name.invalid && (name.dirty || name.touched)">
-          <small *ngIf="name.errors && name.errors['required']" class="text-danger">Name is required</small>
+          <small *ngIf="name.errors && name.errors['required']"
+                 class="text-danger">Name is required</small>
         </div>
 
         <label>Dietary Restrictions</label><br/>
@@ -76,12 +77,10 @@
                   [disabled]="userForm.invalid || !checkboxValidator()"
                   (click)="btnUpdate_click()">Save details
           </button>
-          <a routerLink="/home" class="ms-3 btn btn-danger">Cancel</a>
+          <a routerLink="/home"
+             class="ms-3 btn btn-danger">Cancel</a>
         </div>
       </form>
-    </div>
-    <div class="card-footer">
-      {{userForm.valid}}
     </div>
   </div>
 </div>

@@ -5,71 +5,72 @@ import {Scan} from "../../models/scan.model";
 import {Product} from "../../models/product.model";
 
 @Component({
-    selector: 'app-showpage',
-    templateUrl: './showpage.component.html',
-    styleUrls: ['./showpage.component.css']
+  selector: 'app-showpage',
+  templateUrl: './showpage.component.html',
+  styleUrls: ['./showpage.component.css']
 })
 export class ShowpageComponent {
   products: Product[] = [];
-    scans: Scan[] = [];
+  scans: Scan[] = [];
+  userID: any = -1;
 
-    constructor(private database: DatabaseService, private router: Router) {
-    }
+  constructor(private database: DatabaseService, private router: Router) {
+  }
 
-    ngOnInit() {
-      let userID:any = localStorage.getItem("userID");
-        this.database.selectAllProducts()
-            .then((products) => {
-                this.products = products;
-                return this.database.selectUserScans(userID);
-            })
-            .then((scans)=>{
-                this.scans = scans;
-                for (let product of this.products) {
-                  for (let scan of this.scans){
-                    if (product.id == scan.productID){
-                      product.scan = scan;
-                    }
-                  }
-                }
-            })
-            .catch((err) => {
-                console.log("Error on show all: " + err.message);
-            });
-    }
+  ngOnInit() {
+    this.userID = localStorage.getItem("userID");
+    this.database.selectAllProducts()
+      .then((products) => {
+        this.products = products;
+        return this.database.selectUserScans(this.userID);
+      })
+      .then((scans) => {
+        this.scans = scans;
+        for (let product of this.products) {
+          for (let scan of this.scans) {
+            if (product.id == scan.productID) {
+              product.scan = scan;
+            }
+          }
+        }
+      })
+      .catch((err) => {
+        console.log("Error on show all: " + err.message);
+      });
+  }
 
-    btnModify_click(product: Product){
-        this.router.navigate([`/detail/${product.id}`]);
-    }
+  btnModify_click(product: Product) {
+    this.router.navigate([`/detail/${product.id}`]);
+  }
 
-    btnDeleteProductAndScans_click(product:Product){
+  btnDeleteProductAndScans_click(product: Product) {
 
-        this.database.deleteProduct(product)
-            .then((data)=>{
-                this.ngOnInit();
-                this.router.navigate(['show']);
-            })
-            .catch((err)=>{
-                alert("Error in delete: " + err.message);
-            });
-    }
+    this.database.deleteProduct(product)
+      .then((data) => {
+        this.ngOnInit();
+        this.router.navigate(['show']);
+      })
+      .catch((err) => {
+        alert("Error in delete: " + err.message);
+      });
+  }
 
 
   btnAddProduct_click() {
-      this.router.navigate(['addproduct']);
+    this.router.navigate(['addproduct']);
   }
 
-  productResult_click(product:Product) {
+  productResult_click(product: Product) {
     this.router.navigate([`result/${product.id}/${product.scan.id}`]);
   }
 
   btnDeleteScan_click(scan: Scan) {
     this.database.deleteScan(scan)
-      .then((data)=>{
+      .then((data) => {
         this.ngOnInit();
         this.router.navigate(['show']);
       })
-      .catch((err)=>{
+      .catch((err) => {
         alert("Error in delete: " + err.message);
       });
   }
@@ -78,8 +79,7 @@ export class ShowpageComponent {
     // @ts-ignore
     if (scan.triggerFound == 'true') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DatabaseService} from "../../services/database.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user.model";
@@ -11,10 +11,20 @@ import {User} from "../../models/user.model";
 export class HomepageComponent {
 
   users: User[] = [];
+  firstRun: boolean = false;
+  firstRunDisclaimer = "A database has been created to store the records created by this app.\n\n~~!~~NOTE~~!~~\nDo NOT rely on this app's ingredient scanning results to" +
+    "be fully accurate for any given diet or allergy.\nThis app is a work in progress and as a result it WILL miss some ingredients that can trigger allergies or intolerances."
+
   constructor(private database: DatabaseService, private router: Router) {
   }
 
   ngOnInit() {
+    if (!this.database.appLaunchDbExistCheck()) {
+      this.firstRun = true;
+      this.database.initDB();
+    } else {
+      this.firstRun = false;
+    }
     this.database.selectAllUsers()
       .then((data) => {
         console.log(data);
@@ -23,6 +33,11 @@ export class HomepageComponent {
       .catch((err) => {
         console.log("Error on show all: " + err.message);
       });
+    localStorage.setItem("userID", "-1");
+    // if (this.firstRun == true) {
+    //   alert("A database has been created to store the records created by this app.\n\n~~!~~NOTE~~!~~\nDo NOT rely on this app's ingredient scanning results to be fully accurate for any given" +
+    //     " diet or allergy.\nIt is a work in progress and as a result it WILL miss some ingredients that can trigger allergies or intolerances.\n\n");
+    // }
   }
 
 
@@ -31,12 +46,12 @@ export class HomepageComponent {
   }
 
   btnDelete_click(user: User) {
-    if (confirm("Are you sure you want to delete this profile?\nThis will delete scans done with this profile as well.")){
+    if (confirm("Are you sure you want to delete this profile?\nThis will delete scans done with this profile as well.")) {
       this.database.deleteUserScans(user.id)
-        .then((data)=>{
+        .then((data) => {
           return this.database.deleteUser(user);
         })
-        .then((data)=>{
+        .then((data) => {
           console.log(data);
         });
       this.database.selectAllUsers()
@@ -47,8 +62,7 @@ export class HomepageComponent {
         .catch((err) => {
           console.log("Error on show all: " + err.message);
         });
-    }
-    else {
+    } else {
       return;
     }
   }
@@ -60,5 +74,11 @@ export class HomepageComponent {
 
   btnAddProfile_click() {
     this.router.navigate(['addprofile']);
+  }
+
+  btnCloseNotification_click() {
+    let disclaimerDialog = document.querySelector("#disclaimer");
+    //@ts-ignore
+    disclaimerDialog.close();
   }
 }

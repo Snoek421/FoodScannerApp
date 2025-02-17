@@ -9,21 +9,29 @@
         <div class="mb-3">
           <div class="h5">
             <ul class="list-group">
-              <li class="list-group-item" *ngFor="let ingredient of userIngredients">
+              <li class="list-group-item"
+                  *ngFor="let ingredient of userIngredients">
                 {{ingredient}}
-                <button type="button" id="btnRemoveIngredient" class="float-end btn btn-danger" (click)="btnRemoveIngredient_click(ingredient)">Remove</button>
+                <button type="button"
+                        id="btnRemoveIngredient"
+                        class="float-end btn btn-danger"
+                        (click)="btnRemoveIngredient_click(ingredient)">Remove
+                </button>
               </li>
             </ul>
           </div>
         </div>
 
         <div class="mb-2">
-          <button type="button" id="btnSave"
+          <button type="button"
+                  id="btnSave"
                   class=" ms-3 btn btn-success"
                   [disabled]="userIngredients.length == 1 && userIngredients[0].length < 1"
                   (click)="btnSave_click()"
-          >Save</button>
-          <a routerLink="/ingredients" class="ms-3 btn btn-danger">Cancel</a>
+          >Save
+          </button>
+          <a routerLink="/ingredients"
+             class="ms-3 btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>

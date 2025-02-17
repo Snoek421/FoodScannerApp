@@ -18,7 +18,8 @@
                  autofocus
           >
           <div *ngIf="name.invalid && (name.dirty || name.touched)">
-            <small *ngIf="name.errors && name.errors['required']" class="text-danger">Name is required</small>
+            <small *ngIf="name.errors && name.errors['required']"
+                   class="text-danger">Name is required</small>
           </div>
         </div>
 
@@ -74,7 +75,8 @@
                   [disabled]="userForm.invalid || !checkboxValidator()"
                   (click)="btnAdd_click()">Create Profile
           </button>
-          <a routerLink="/home" class="ms-3 btn btn-danger">Cancel</a>
+          <a routerLink="/home"
+             class="ms-3 btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>

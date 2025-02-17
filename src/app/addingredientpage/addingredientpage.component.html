@@ -18,7 +18,8 @@
                  autofocus
           >
           <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)">
-            <small *ngIf="ingredientName.errors && ingredientName.errors['required']" class="text-danger">The ingredient name is required</small>
+            <small *ngIf="ingredientName.errors && ingredientName.errors['required']"
+                   class="text-danger">The ingredient name is required</small>
           </div>
         </div>
 
@@ -29,12 +30,15 @@
                   [disabled]="ingredientForm.invalid"
                   (click)="btnAdd_click()">Add Ingredient
           </button>
-          <button type="button" id="btnSave"
+          <button type="button"
+                  id="btnSave"
                   class=" ms-3 btn btn-success"
                   [disabled]="userIngredients.length == 1 && userIngredients[0].length < 1"
                   (click)="btnSave_click()"
-          >Save</button>
-          <a routerLink="/ingredients" class="ms-3 btn btn-danger">Cancel</a>
+          >Save
+          </button>
+          <a routerLink="/ingredients"
+             class="ms-3 btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>

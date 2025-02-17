@@ -4,18 +4,54 @@
       <h1>Choose a Profile</h1>
     </div>
     <div class="card-body">
+      <div class="text-center">
+        <dialog *ngIf="firstRun"
+                id="disclaimer"
+                open
+                class="bg-light rounded" style="z-index:9999">
+          <strong class="text-dark fs-4">Alert</strong>
+          <br/>A database has been created to store the records created by this app.
+          <br/><br/>
+          <strong class="text-danger fs-4">!~~!~~~NOTE~~~!~~!</strong>
+          <br/>Do <strong>NOT</strong> rely on this app's scanning results to be fully accurate for all diets.
+          <br/><br/>This app is a work in progress and it WILL miss some ingredients that can be problematic. Under no circumstances should you use the results of a scan as proof that a food is
+          safe for you to eat, particularly if you have a life-threatening allergy.
+          <br/>
+          <button id="btnCloseNotification"
+                  class="btn btn-outline-dark"
+                  (click)="btnCloseNotification_click()">OK
+          </button>
+        </dialog>
+      </div>
       <ul class="list-group">
-        <li *ngFor="let user of users" class="list-group-item list-group-item-action">
-            <label class="btn btn-primary col-6 fw-semibold" role="button" (click)="userProfile_click(user)">{{user.name}}</label>
-            <div class="float-end">
-              <button class="btn btn-primary btn-sm me-1" (click)="btnModify_click(user)">Modify</button>
-              <button class="btn btn-danger btn-sm me-1" (click)="btnDelete_click(user)">Delete</button>
-            </div>
+        <li *ngFor="let user of users"
+            class="list-group-item list-group-item-action">
+          <label class="btn btn-primary col-6 fw-semibold"
+                 role="button"
+                 (click)="userProfile_click(user)">{{user.name}}</label>
+          <div class="float-end">
+            <button class="btn btn-primary btn-sm me-1"
+                    (click)="btnModify_click(user)">
+              <img src="assets/pencil-square.svg"
+                   width="32"
+                   height="32"
+                   alt="Modify profile"/>
+            </button>
+            <button class="btn btn-danger btn-sm me-1"
+                    (click)="btnDelete_click(user)">
+              <img src="assets/x-square.svg"
+                   width="32"
+                   height="32"
+                   alt="delete profile"/>
+            </button>
+          </div>
         </li>
 
       </ul>
       <div class="mt-2 d-grid">
-        <button class="btn btn-success " (click)="btnAddProfile_click()">Add New Profile</button>
+        <button class="btn btn-success "
+                (click)="btnAddProfile_click()">Add New Profile
+        </button>
       </div>
     </div>
   </div>
