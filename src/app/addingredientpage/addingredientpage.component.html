@@ -1,0 +1,51 @@
+<div class="m-4"
+     xmlns="http://www.w3.org/1999/html">
+  <div class="card">
+    <div class="card-header">
+      <h2>Select or Add a profile</h2>
+    </div>
+    <div class="card-body">
+      <form #ingredientForm="ngForm">
+        <div class="mb-3">
+          <label for="txtIngredient">Name</label>
+          <input id="txtIngredient"
+                 type="text"
+                 class="form-control"
+                 name="txtIngredient"
+                 [(ngModel)]="ingredient.name"
+                 #ingredientName="ngModel"
+                 required
+                 autofocus
+          >
+          <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)">
+            <small *ngIf="ingredientName.errors && ingredientName.errors['required']" class="text-danger">The ingredient name is required</small>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <button type="button"
+                  id="btnAdd"
+                  class="btn btn-primary"
+                  [disabled]="ingredientForm.invalid"
+                  (click)="btnAdd_click()">Add Ingredient
+          </button>
+          <button type="button" id="btnSave"
+                  class=" ms-3 btn btn-success"
+                  [disabled]="userIngredients.length == 1 && userIngredients[0].length < 1"
+                  (click)="btnSave_click()"
+          >Save</button>
+          <a routerLink="/ingredients" class="ms-3 btn btn-danger">Cancel</a>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <div class="h5">
+        <ul>
+          <li *ngFor="let ingredient of userIngredients">{{ingredient}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+

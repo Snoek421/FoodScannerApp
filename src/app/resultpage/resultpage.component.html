@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card" *ngIf="scannedProduct else notScanned">
+    <div class="card-header text-center">
+      <h1>Scan Results for product: {{product.productName}}</h1>
+    </div>
+    <div class="card-body">
+      <h3>Product name: {{product.productName}}</h3>
+      <h4 *ngIf="resultCheck(scan); else no" class="text-danger">Warning! May trigger diet issues.</h4>
+      <ng-template #no><h4 class="text-success">This should be safe to eat.</h4> </ng-template>
+      <table class="table table-striped-columns table-bordered bg-light">
+        <thead >
+          <tr>
+            <th>Ingredient</th>
+            <th>Problem</th>
+            <th>Dietary Restriction</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let ingredient of ingredients">
+            <td>{{ingredient.name}}</td>
+            <td>{{ingredient.problematic}}</td>
+            <td>{{ingredient.dietaryRestriction}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="mt-2 row">
+        <button class="btn btn-success col-6" (click)="btnScanProduct_click()">Re-scan Product</button>
+        <button class="btn btn-warning col-6" (click)="btnBackToList_click()">Back to Product List</button>
+      </div>
+
+    </div>
+  </div>
+  <ng-template #notScanned class="card">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1>Product name: {{product.productName}}</h1>
+      </div>
+      <div class="card-body">
+        <h3>You haven't scanned this product yet</h3><br/>
+        <div class="mb-2 row">
+          <button class="btn btn-success col-6" (click)="btnScanProduct_click()">Scan Product</button>
+          <button class="btn btn-warning col-6" (click)="btnBackToList_click()">Back to Product List</button>
+        </div>
+        <table class="table table-striped table-bordered bg-light">
+          <thead >
+            <tr>
+              <th>Ingredient</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let ingredient of ingredients">
+              <td>{{ingredient.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+</div>

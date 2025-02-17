@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h1>Choose a Profile</h1>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let user of users" class="list-group-item list-group-item-action">
+            <label class="btn btn-primary col-6 fw-semibold" role="button" (click)="userProfile_click(user)">{{user.name}}</label>
+            <div class="float-end">
+              <button class="btn btn-primary btn-sm me-1" (click)="btnModify_click(user)">Modify</button>
+              <button class="btn btn-danger btn-sm me-1" (click)="btnDelete_click(user)">Delete</button>
+            </div>
+        </li>
+
+      </ul>
+      <div class="mt-2 d-grid">
+        <button class="btn btn-success " (click)="btnAddProfile_click()">Add New Profile</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="m-4"
+     xmlns="http://www.w3.org/1999/html">
+  <div class="card">
+    <div class="card-header">
+      <h2>Select or Add a profile</h2>
+    </div>
+    <div class="card-body">
+      <form #userForm="ngForm">
+        <div class="mb-3">
+          <label for="txtUsername">Name</label>
+          <input id="txtUsername"
+                 type="text"
+                 class="form-control"
+                 name="txtUsername"
+                 [(ngModel)]="user.name"
+                 #name="ngModel"
+                 required
+                 autofocus
+          >
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <small *ngIf="name.errors && name.errors['required']" class="text-danger">Name is required</small>
+          </div>
+        </div>
+
+        <label>Dietary Restrictions</label><br/>
+        <div class="mb-3 btn-group"
+             role="group"
+             aria-label="Diet Restrictions">
+          <input id="chkGluten"
+                 type="checkbox"
+                 class="btn-check"
+                 name="chkGluten"
+                 [(ngModel)]="user.gluten"
+                 #gluten="ngModel"
+          />
+          <label for="chkGluten"
+                 class="btn btn-outline-primary">Gluten</label>
+          <input id="chkDairy"
+                 type="checkbox"
+                 class="btn-check"
+                 name="chkDairy"
+                 [(ngModel)]="user.dairy"
+                 #dairy="ngModel"
+          />
+          <label for="chkDairy"
+                 class="btn btn-outline-primary">Dairy</label>
+          <input id="chkTreeNuts"
+                 type="checkbox"
+                 class="btn-check"
+                 name="chkTreenuts"
+                 [(ngModel)]="user.treenut"
+                 #treenut="ngModel"
+          />
+          <label for="chkTreeNuts"
+                 class="btn btn-outline-primary">Tree Nuts</label>
+          <input id="chkPeanuts"
+                 type="checkbox"
+                 class="btn-check"
+                 name="chkPeanuts"
+                 [(ngModel)]="user.peanut"
+                 #peanut="ngModel"
+          />
+          <label for="chkPeanuts"
+                 class="btn btn-outline-primary">Peanut</label>
+        </div>
+        <div *ngIf="!checkboxValidator() && (gluten.dirty || gluten.touched || dairy.dirty || dairy.touched || treenut.dirty || treenut.touched || peanut.dirty || peanut.touched)">
+          <small class="text-danger">At least one diet restriction must be selected!</small>
+        </div>
+
+        <div class="mb-2">
+          <button type="button"
+                  id="btnAdd"
+                  class="btn btn-primary"
+                  [disabled]="userForm.invalid || !checkboxValidator()"
+                  (click)="btnAdd_click()">Create Profile
+          </button>
+          <a routerLink="/home" class="ms-3 btn btn-danger">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,49 @@
+<div class="m-4"
+     xmlns="http://www.w3.org/1999/html">
+  <div class="card">
+    <div class="card-header">
+      <h2>Scan a New Product</h2>
+    </div>
+    <div class="card-body">
+      <form #productForm="ngForm">
+        <div class="mb-3">
+          <label for="txtproductName">Product Name</label>
+          <input id="txtProductName"
+                 type="text"
+                 class="form-control"
+                 name="txtProductName"
+                 [(ngModel)]="product.productName"
+                 #productName="ngModel"
+                 required
+          >
+          <div *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+            <small *ngIf="productName.errors && productName.errors['required']" class="text-danger">Product name is required</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="txaIngredientsList">Ingredients</label>
+          <textarea name="txaIngredientsList" id="txaIngredientsList" class="form-control"
+          [(ngModel)]="product.ingredientsList"
+                    #ingredientsList="ngModel"
+          required
+          ></textarea>
+          <div *ngIf="ingredientsList.invalid && (ingredientsList.dirty || ingredientsList.touched)">
+            <small *ngIf="ingredientsList.errors && ingredientsList.errors['required']" class="text-danger">Ingredients are required</small>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <button type="button"
+                  id="btnAdd"
+                  class="btn btn-primary"
+                  [disabled]="productForm.invalid"
+                  (click)="btnScan_click()">Scan product
+          </button>
+          <a routerLink="/show" class="ms-3 btn btn-danger">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

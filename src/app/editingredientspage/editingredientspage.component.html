@@ -1,0 +1,36 @@
+<div class="m-4"
+     xmlns="http://www.w3.org/1999/html">
+  <div class="card">
+    <div class="card-header">
+      <h2>Select or Add a profile</h2>
+    </div>
+    <div class="card-body">
+      <form #ingredientForm="ngForm">
+        <div class="mb-3">
+          <div class="h5">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let ingredient of userIngredients">
+                {{ingredient}}
+                <button type="button" id="btnRemoveIngredient" class="float-end btn btn-danger" (click)="btnRemoveIngredient_click(ingredient)">Remove</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <button type="button" id="btnSave"
+                  class=" ms-3 btn btn-success"
+                  [disabled]="userIngredients.length == 1 && userIngredients[0].length < 1"
+                  (click)="btnSave_click()"
+          >Save</button>
+          <a routerLink="/ingredients" class="ms-3 btn btn-danger">Cancel</a>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>
+
+
